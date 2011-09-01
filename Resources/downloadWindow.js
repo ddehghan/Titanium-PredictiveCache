@@ -58,8 +58,6 @@
 			multifileButton.addEventListener('click', function() {
 				utility.downloadOneFile('https://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png', 'ti1.png', _callBack_DownloadDone);
 				MyAppGlob.imagesToView.push('ti1.png');
-				// mainWindow.tabGroup.tabs[1].window = viewWindow.renderWindow();
-
 			});
 
 			_window.add(multifileButton);
