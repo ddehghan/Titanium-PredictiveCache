@@ -1,18 +1,20 @@
-Welcome to your Appcelerator Titanium Mobile Project
+Example of Appcelerator Titanium Mobile Project
 
-This is a blank project.  Start by editing your application's app.js to 
-make your first mobile project using Titanium.
-
+Here is an example of simple app that downloads multiple image files and then displays them to the users. 
 
 
-----------------------------------
-Stuff our legal folk make us say:
+How ti works:
+=============
+The files urls are first added to a queue. Then a recursive call is made to process each of the items in the queue.
 
-Appcelerator, Appcelerator Titanium and associated marks and logos are 
-trademarks of Appcelerator, Inc. 
 
-Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc. All Rights Reserved.
+Tested on:
+==========
+iOS 4.3 
 
-Titanium is licensed under the Apache Public License (Version 2). Please
-see the LICENSE file for the full license.
 
+Contributors:
+=============
+
+Feel free to send me pull request to improve this example. 
+ 

@@ -1,1 +1,5 @@
-Place your change log text here.  This file will be incorporated with your app at package time.
+Version 0.1
+===========
+
+* Implemented single and multiple file download
+* Refactored the code to not pollute the global scope
