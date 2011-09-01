@@ -1,9 +1,18 @@
-Ti.include('mainWindow.js');
+myNameSpace = {};
+
 Ti.include('downloadWindow.js');
 Ti.include('viewWindow.js');
 Ti.include('utility.js');
+Ti.include('mainWindow.js');
 
-imagesToView = [];
 
-mainWindow.renderWindow();
+MyAppGlob = {
+	MainWindow : new myNameSpace.MainWindow(),
+	DownloadWindow : new myNameSpace.DownloadWindow(),
+	ViewWindow : new myNameSpace.ViewWindow(),
+	imagesToView : []
+};
 
+MyAppGlob.ViewWindow.init();
+MyAppGlob.DownloadWindow.init();
+MyAppGlob.MainWindow.init();

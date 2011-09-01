@@ -1,35 +1,48 @@
-var mainWindow = {};
+(function() {
+	// All your JS code goes in here
 
-mainWindow.bgColor=  '#300';
-mainWindow.tabGroup = {};
+	myNameSpace.MainWindow = function() {
+		var _window = '';
+		var _tabGroup = '';
 
-mainWindow.renderWindow = function() {
+		var _init = function() {
+			_window = '';
+			_window = Ti.UI.createWindow({
+				backgroundColor : "#fff",
+				title : "Lean Prototype",
+				fullscreen : false
+			});
 
-	// this sets the background color of the master UIView (when there are no windows/tab groups on it)
-	Titanium.UI.setBackgroundColor(mainWindow.bgColor);
+			// create tab group
+			_tabGroup = Titanium.UI.createTabGroup();
 
-	// create tab group
-	mainWindow.tabGroup = Titanium.UI.createTabGroup();
+			var tab1 = Titanium.UI.createTab({
+				icon : 'images/KS_nav_views.png',
+				title : 'My Apps',
+				window : MyAppGlob.DownloadWindow.getWindow()
+			});
 
-	var tab1 = Titanium.UI.createTab({
-		icon:'KS_nav_views.png',
-		title:'Tab 1',
-		window: downloadWindow.renderWindow()
-	});
+			_tabGroup.addTab(tab1);
 
-	var tab2 = Titanium.UI.createTab({
-		icon:'KS_nav_views.png',
-		title:'Tab 2',
-		window: viewWindow.renderWindow()
-	});
+			var tab3 = Titanium.UI.createTab({
+				icon : 'images/KS_nav_views.png',
+				title : 'Settings',
+				window : MyAppGlob.ViewWindow.getWindow()
+			});
 
-	//
-	//  add tabs
-	//
-	mainWindow.tabGroup.addTab(tab1);
-	mainWindow.tabGroup.addTab(tab2);
+			_tabGroup.addTab(tab3);
 
-	// open tab group
-	mainWindow.tabGroup.open();
+			_tabGroup.open();
+		};
+		return {// publicly accessible API
 
-};
+			init : function() {
+				return _init();
+			},
+			getWindow : function() {
+				return _window;
+			}
+		};
+
+	};
+})();
