@@ -5,10 +5,10 @@
 		var _window = '';
 		var _image = '';
 
-		var _callBack_DownloadDone = function() {
-			imagePath = Titanium.Filesystem.applicationDataDirectory + MyAppGlob.imagesToView[0];
-			_image.image = Titanium.Filesystem.getFile(imagePath);
-			Ti.API.info('View this image: ' + imagePath);
+		var _callBack_DisplayFile = function() {
+
+			_image.image = Titanium.Filesystem.getFile(MyAppGlob.imagePathToShow);
+			Ti.API.info('View this image: ' + MyAppGlob.imagePathToShow);
 		};
 		var _init = function() {
 			_window = '';
@@ -41,12 +41,14 @@
 			});
 
 			onefileButton.addEventListener('click', function() {
-				utility.downloadOneFile('https://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png', 'ti1.png', _callBack_DownloadDone);
-				MyAppGlob.imagesToView.push('ti1.png');
+				var filePath = Titanium.Filesystem.applicationDataDirectory + 'ti1.png';
+				MyAppGlob.imagePathToShow = filePath;
+				utility.downloadOneFile("http://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png", filePath, _callBack_DisplayFile);
+
 			});
 
 			_window.add(onefileButton);
-			
+
 			var multifileButton = Titanium.UI.createButton({
 				title : 'Get 3 file',
 				height : 40,
@@ -56,12 +58,29 @@
 			});
 
 			multifileButton.addEventListener('click', function() {
-				utility.downloadOneFile('https://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png', 'ti1.png', _callBack_DownloadDone);
-				MyAppGlob.imagesToView.push('ti1.png');
+
+				var downloadQueue = [];
+
+				downloadQueue.push({
+					'filepath' : Titanium.Filesystem.applicationDataDirectory + "c.png",
+					'url' : "http://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/64px-PD-icon.svg.png"
+				});
+
+				downloadQueue.push({
+					'filepath' : Titanium.Filesystem.applicationDataDirectory + "ti.png",
+					'url' : "http://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png"
+				});
+				
+				downloadQueue.push({
+					'filepath' : Titanium.Filesystem.applicationDataDirectory + "r.png",
+					'url' : "http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Orange_trademark.svg/64px-Orange_trademark.svg.png"
+				});
+
+				utility.downloadMultiFile(downloadQueue, _callBack_DisplayFile);
+
 			});
 
 			_window.add(multifileButton);
-						
 			_image = Titanium.UI.createImageView({
 				top : 200,
 				left : 20

@@ -33,5 +33,35 @@ utility.downloadOneFile = function(url, filepath, callBack) {
 	}
 
 	c.send();
+};
 
+utility.downloadMultiFile = function(downloadQueue, callBack_DisplayFile) {
+
+	// var downloadQueue = [];
+	var queueIndex = 0;
+
+	var processQueue = function() {
+
+		if(queueIndex < downloadQueue.length) {
+
+			// report download progress to the progress bar on AppList Page
+			// downloadProgress_callback(downloadQueue.length + 1, queueIndex + 1);
+			MyAppGlob.imagePathToShow = downloadQueue[queueIndex].filepath;
+			callBack_DisplayFile();
+			
+			utility.downloadOneFile(downloadQueue[queueIndex].url, downloadQueue[queueIndex].filepath, processQueue);
+			queueIndex++;
+			// processQueue();
+
+		} else {
+			var alertDialog = Titanium.UI.createAlertDialog({
+				title : '',
+				message : 'Download finished',
+				buttonNames : ['OK']
+			});
+			alertDialog.show();
+		}
+
+	};
+	processQueue();
 };

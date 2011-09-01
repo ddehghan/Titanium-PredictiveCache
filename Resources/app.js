@@ -10,7 +10,7 @@ MyAppGlob = {
 	MainWindow : new myNameSpace.MainWindow(),
 	DownloadWindow : new myNameSpace.DownloadWindow(),
 	ViewWindow : new myNameSpace.ViewWindow(),
-	imagesToView : []
+	imagePathToShow : {}
 };
 
 MyAppGlob.ViewWindow.init();
