@@ -1,4 +1,6 @@
 Example of Appcelerator Titanium Mobile Project
+-----------------------------------------------
+
 
 Here is an example of simple app that downloads multiple image files and then displays them to the users. 
 
@@ -10,8 +12,8 @@ The files urls are first added to a queue. Then a recursive call is made to proc
 
 Tested on:
 ==========
-iOS 4.3
-TI platform version 1.7.2
+* iOS 4.3
+* TI platform version 1.7.2
 
 
 Contributors:
