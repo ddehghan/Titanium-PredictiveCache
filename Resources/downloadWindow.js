@@ -70,7 +70,7 @@
 					'filepath' : Titanium.Filesystem.applicationDataDirectory + "ti.png",
 					'url' : "http://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png"
 				});
-				
+
 				downloadQueue.push({
 					'filepath' : Titanium.Filesystem.applicationDataDirectory + "r.png",
 					'url' : "http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Orange_trademark.svg/64px-Orange_trademark.svg.png"
@@ -83,7 +83,9 @@
 			_window.add(multifileButton);
 			_image = Titanium.UI.createImageView({
 				top : 200,
-				left : 20
+				left : 100,
+				height : 100,
+				width : 100
 			});
 
 			_window.add(_image);
