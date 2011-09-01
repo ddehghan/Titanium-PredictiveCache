@@ -9,7 +9,7 @@
 			_window = '';
 			_window = Ti.UI.createWindow({
 				backgroundColor : "#fff",
-				title : "Lean Prototype",
+				title : "Example app",
 				fullscreen : false
 			});
 
@@ -17,8 +17,8 @@
 			_tabGroup = Titanium.UI.createTabGroup();
 
 			var tab1 = Titanium.UI.createTab({
-				icon : 'images/KS_nav_views.png',
-				title : 'My Apps',
+				icon : 'images/KS_nav_ui.png',
+				title : 'Tab 1',
 				window : MyAppGlob.DownloadWindow.getWindow()
 			});
 
@@ -26,7 +26,7 @@
 
 			var tab3 = Titanium.UI.createTab({
 				icon : 'images/KS_nav_views.png',
-				title : 'Settings',
+				title : 'Tab 2',
 				window : MyAppGlob.ViewWindow.getWindow()
 			});
 
