@@ -5,10 +5,21 @@
 		var _window = '';
 		var _image = '';
 
-		var _callBack_DisplayFile = function() {
+		var _callBack_DownloadOneFileFinished = function(download_result) {
 
-			_image.image = Titanium.Filesystem.getFile(MyAppGlob.imagePathToShow);
-			Ti.API.info('View this image: ' + MyAppGlob.imagePathToShow);
+			if( typeof (download_result) !== 'undefined') {
+				_image.image = Titanium.Filesystem.getFile(download_result.path);
+				Ti.API.info('View this image: ' + download_result.path);
+			}
+		};
+		var _callBack_DownloadMultipleFileFinished = function() {
+
+			var alertDialog = Titanium.UI.createAlertDialog({
+				title : '',
+				message : 'All files downloaded',
+				buttonNames : ['OK']
+			});
+			alertDialog.show();
 		};
 		var _init = function() {
 			_window = '';
@@ -41,16 +52,16 @@
 			});
 
 			onefileButton.addEventListener('click', function() {
-				var filePath = Titanium.Filesystem.applicationDataDirectory + 'ti1.png';
-				MyAppGlob.imagePathToShow = filePath;
-				utility.downloadOneFile("http://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png", filePath, _callBack_DisplayFile);
+				var filePath = Titanium.Filesystem.applicationDataDirectory + '1.jpg';
+
+				utility.downloadOneFile("http://bit.ly/qhYRW9", filePath, _callBack_DownloadOneFileFinished);
 
 			});
 
 			_window.add(onefileButton);
 
 			var multifileButton = Titanium.UI.createButton({
-				title : 'Get 3 file',
+				title : 'Get 5 file',
 				height : 40,
 				width : 100,
 				top : 100,
@@ -59,33 +70,37 @@
 
 			multifileButton.addEventListener('click', function() {
 
-				var downloadQueue = [];
+				var downloadQueue = [{
+					'filepath' : Titanium.Filesystem.applicationDataDirectory + "2.jpg",
+					'url' : "http://bit.ly/oiAxc3"
+				}, {
+					'filepath' : Titanium.Filesystem.applicationDataDirectory + "2.jpg",
+					'url' : "http://bit.ly/oiAxc3"
+				}, {
+					'filepath' : Titanium.Filesystem.applicationDataDirectory + "3.jpg",
+					'url' : "http://bit.ly/qgAbOE"
+				}, {
+					'filepath' : Titanium.Filesystem.applicationDataDirectory + "4.jpg",
+					'url' : "http://bit.ly/nzZiVd"
+				}, {
+					'filepath' : Titanium.Filesystem.applicationDataDirectory + "5.jpg",
+					'url' : "http://bit.ly/pkGwHF"
+				}];
 
 				downloadQueue.push({
-					'filepath' : Titanium.Filesystem.applicationDataDirectory + "c.png",
-					'url' : "http://upload.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/64px-PD-icon.svg.png"
+					'filepath' : Titanium.Filesystem.applicationDataDirectory + "6.jpg",
+					'url' : "http://bit.ly/nlRoQi"
 				});
 
-				downloadQueue.push({
-					'filepath' : Titanium.Filesystem.applicationDataDirectory + "ti.png",
-					'url' : "http://www.appcelerator.com/wp-content/uploads/2009/06/titanium_desk.png"
-				});
-
-				downloadQueue.push({
-					'filepath' : Titanium.Filesystem.applicationDataDirectory + "r.png",
-					'url' : "http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Orange_trademark.svg/64px-Orange_trademark.svg.png"
-				});
-
-				utility.downloadMultiFile(downloadQueue, _callBack_DisplayFile);
+				utility.downloadMultiFile(downloadQueue, _callBack_DownloadOneFileFinished, _callBack_DownloadMultipleFileFinished);
 
 			});
 
 			_window.add(multifileButton);
 			_image = Titanium.UI.createImageView({
 				top : 200,
-				left : 100,
-				height : 100,
-				width : 100
+				left : 0,
+				width : Ti.Platform.displayCaps.platformWidth
 			});
 
 			_window.add(_image);
