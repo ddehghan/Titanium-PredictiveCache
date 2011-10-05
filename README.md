@@ -22,30 +22,30 @@ an other user defined call back function is called.
 
 Example 1:
 ==========
-// 1 File Download
-var _callBack_DownloadOneFileFinished = function(download_result) {
-	alert("finished downloading" + download_result.path);
-};
-
-utility.downloadOneFile("http://bit.ly/qhYRW9", '1.jpg', _callBack_DownloadOneFileFinished);
-
+	// 1 File Download
+	var _callBack_DownloadOneFileFinished = function(download_result) {
+		alert("finished downloading" + download_result.path);
+	};
+	
+	utility.downloadOneFile("http://bit.ly/qhYRW9", Titanium.Filesystem.applicationDataDirectory + '1.jpg', _callBack_DownloadOneFileFinished);
+	
 
 
 Example 2:
 ==========
-// Multiple file download
+	// Multiple file download
 
-var downloadQueue = [{ 'filepath' : Titanium.Filesystem.applicationDataDirectory + "2.jpg",	'url' : "http://bit.ly/oiAxc3"}, 
-					{'filepath' : Titanium.Filesystem.applicationDataDirectory + "3.jpg", 'url' : "http://bit.ly/qgAbOE"}];
-
-var _callBack_DownloadOneFileFinished = function(download_result) {
-	alert("finished downloading" + download_result.path);
-};
-var _callBack_DownloadMultipleFileFinished = function() {
-	alert("finished downloading all files");
-};
-
-utility.downloadMultiFile(downloadQueue, _callBack_DownloadOneFileFinished, _callBack_DownloadMultipleFileFinished);
+	var downloadQueue = [{ 'filepath' : Titanium.Filesystem.applicationDataDirectory + "2.jpg",	'url' : "http://bit.ly/oiAxc3"}, 
+						{'filepath' : Titanium.Filesystem.applicationDataDirectory + "3.jpg", 'url' : "http://bit.ly/qgAbOE"}];
+	
+	var _callBack_DownloadOneFileFinished = function(download_result) {
+		alert("finished downloading" + download_result.path);
+	};
+	var _callBack_DownloadMultipleFileFinished = function() {
+		alert("finished downloading all files");
+	};
+	
+	utility.downloadMultiFile(downloadQueue, _callBack_DownloadOneFileFinished, _callBack_DownloadMultipleFileFinished);
 
 
 Tested on:
