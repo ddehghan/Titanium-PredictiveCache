@@ -6,7 +6,7 @@
 		var _image = '';
 
 		var _callBack_DownloadOneFileFinished = function(download_result) {
-
+			alert("finished downloading 1 file");
 			if( typeof (download_result) !== 'undefined') {
 				_image.image = Titanium.Filesystem.getFile(download_result.path);
 				Ti.API.info('View this image: ' + download_result.path);
@@ -52,9 +52,8 @@
 			});
 
 			onefileButton.addEventListener('click', function() {
-				var filePath = Titanium.Filesystem.applicationDataDirectory + '1.jpg';
 
-				utility.downloadOneFile("http://bit.ly/qhYRW9", filePath, _callBack_DownloadOneFileFinished);
+				utility.downloadOneFile("http://bit.ly/qhYRW9", '1.jpg', _callBack_DownloadOneFileFinished);
 
 			});
 
