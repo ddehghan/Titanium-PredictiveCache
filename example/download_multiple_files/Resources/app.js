@@ -2,7 +2,7 @@ myNameSpace = {};
 
 Ti.include('downloadWindow.js');
 Ti.include('viewWindow.js');
-Ti.include('utility.js');
+Ti.include('download_utility.js');
 Ti.include('mainWindow.js');
 
 

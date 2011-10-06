@@ -1,6 +1,18 @@
 var utility = {};
 
-// Download any file. The path folder in which the file to be downloaded must exsists.
+
+/**
+ * Make and http call and save the result into a file.
+ * 
+ * Parameters:
+ * url - url of the http call to be downloaded. 
+ * localFilePath - The path of the local file where the content will be saved. The folder in which the file to be downloaded must exsists.
+ * callBack_DownloadOneFileFinished - The fucntion that is called once the download has finished
+ * 		Callback return object:
+ * 			{ status, path}
+ * 		status: integer - HTTP status for the call. 200 means successful. 
+ * 		path: string - full path of the file just downloaded
+ */
 utility.downloadOneFile = function(url, localFilepath, callBack_DownloadOneFileFinished) {
 
 	var c = Titanium.Network.createHTTPClient();
@@ -42,6 +54,21 @@ utility.downloadOneFile = function(url, localFilepath, callBack_DownloadOneFileF
 	c.send();
 };
 
+/**
+ * Given an array of URLs make several http calls and save the results into different file.
+ * 
+ * Parameters:
+ * downloadQueue - [{'filepath' : "", 'url': ""}]
+ * 			filepath - The path of the local file where the content will be saved. The folder in which the file to be downloaded must exsists.
+ * 			url - url of the http call to be downloaded. 
+ * callBack_DownloadOneFileFinished - The fucntion that is called once each file download has finished
+ * 		Callback return object:
+ * 			{ status, path}
+ * 		status: integer - HTTP status for the call. 200 means successful. 
+ * 		path: string - full path of the file just downloaded
+ * callBack_DownloadMultipleFileFinished - The function that is caled once all the files are downloaded. This function does not accept any parameters
+ * 
+ */
 utility.downloadMultiFile = function(downloadQueue, callBack_DownloadOneFileFinished, callBack_DownloadMultipleFileFinished) {
 
 	var queueIndex = 0;
