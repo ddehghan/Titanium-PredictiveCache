@@ -5,3 +5,4 @@ tmp
 build/
 .settings/
 .idea/
+/.fastdev.lock

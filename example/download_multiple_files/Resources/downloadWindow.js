@@ -52,7 +52,7 @@
 
 			onefileButton.addEventListener('click', function() {
 
-				utility.downloadOneFile("http://bit.ly/qhYRW9", '1.jpg', _callBack_DownloadOneFileFinished);
+				utility.downloadOneFile("http://bit.ly/qhYRW9", Titanium.Filesystem.applicationDataDirectory + '1.jpg', _callBack_DownloadOneFileFinished);
 
 			});
 
@@ -94,11 +94,13 @@
 
 			});
 
+
 			_window.add(multifileButton);
 			_image = Titanium.UI.createImageView({
-				top : 200,
+				top : 150,
 				left : 0,
-				width : Ti.Platform.displayCaps.platformWidth
+				width : Ti.Platform.displayCaps.platformWidth,
+				height: Ti.Platform.displayCaps.platformHeight-150
 			});
 
 			_window.add(_image);
