@@ -9,8 +9,7 @@ Ti.include('mainWindow.js');
 MyAppGlob = {
 	MainWindow : new myNameSpace.MainWindow(),
 	DownloadWindow : new myNameSpace.DownloadWindow(),
-	ViewWindow : new myNameSpace.ViewWindow(),
-	imagePathToShow : {}
+	ViewWindow : new myNameSpace.ViewWindow()
 };
 
 MyAppGlob.ViewWindow.init();
