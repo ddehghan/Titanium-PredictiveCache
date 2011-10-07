@@ -4,8 +4,8 @@ A File Download Library for Appcelerator Titanium Mobile Projects
 
 Support:
 ========
-* Download the latest version from: https://github.com/ddehghan/Titanium-PredictiveCache
-* Please file bugs or suggestion on github.
+ * Download the latest version from: https://github.com/ddehghan/Titanium-PredictiveCache
+ * Please file bugs or suggestion on github.
 
 
 This library implements a download queue that downloads a single or multiple files to device. 
@@ -14,14 +14,16 @@ Features:
 =========
 
 Version 1.0:
-* Download 1 file or multiple files.
-* Standalone library the handles all download functionality
-* Logs downloaded urls to debug stream to ease troubleshooting 
-* Callback function after each file is downloaded
-* Callback function after all files in a queue are downloaded
+
+ * Download 1 file or multiple files.
+ * Standalone library the handles all download functionality
+ * Logs downloaded urls to debug stream to ease troubleshooting 
+ * Callback function after each file is downloaded
+ * Callback function after all files in a queue are downloaded
 
 Version 2.0:
-* Predictively download files that the user will likely download in the future. So that they are ready when the application needs them. We are currently developing this prediction algorithm. If you would like to get a preview send me an email. ddehghan at gmail.com
+
+ * Predictively download files that the user will likely download in the future. So that they are ready when the application needs them. We are currently developing this prediction algorithm. If you would like to get a preview send me an email. ddehghan at gmail.com
 
 
 How it works:
