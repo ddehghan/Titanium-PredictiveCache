@@ -69,7 +69,7 @@
 			multifileButton.addEventListener('click', function() {
 
 				var downloadQueue = [{
-					'filepath' : Titanium.Filesystem.applicationDataDirectory + "2.jpg",
+					'filepath' : Titanium.Filesystem.applicationDataDirectory + "1.jpg",
 					'url' : "http://bit.ly/oiAxc3"
 				}, {
 					'filepath' : Titanium.Filesystem.applicationDataDirectory + "2.jpg",
